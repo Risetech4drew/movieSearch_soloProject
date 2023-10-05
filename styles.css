@@ -24,7 +24,6 @@ body {
   background-image: url("/imgs/THJJRUhNlEc.png");
   background-size: cover;
   background-position: 100%;
-  opacity: 1;
 }
 h3 {
   font-size: 1.56rem;
@@ -38,6 +37,12 @@ a {
   color: #fff;
   text-decoration: none;
   font-size: 0.875rem;
+  position: relative;
+  z-index: 1;
+}
+a:hover {
+  text-decoration: underline dotted #d1d5db;
+  cursor: pointer;
 }
 .hero-content {
   display: flex;
@@ -76,7 +81,7 @@ button {
 }
 .movies-section {
   display: flex;
-  height: 100vh;
+  height: 90vh;
 }
 div.movie-icon-container {
   display: flex;
