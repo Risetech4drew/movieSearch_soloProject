@@ -7,7 +7,7 @@ document.getElementById("search-btn").addEventListener("click", function () {
   const searchInputValue = document.getElementById("search-el").value;
   //   console.log(searchInput);
   fetch(
-    `http://www.omdbapi.com/?apikey=52558a9&s=${searchInputValue}&type=movie`
+    `https://www.omdbapi.com/?apikey=52558a9&s=${searchInputValue}&type=movie`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -18,7 +18,7 @@ document.getElementById("search-btn").addEventListener("click", function () {
       });
       moviesFoundPromisesArr = moviesByIds.map(function (movieId) {
         return fetch(
-          `http://www.omdbapi.com/?apikey=52558a9&i=${movieId}`
+          `https://www.omdbapi.com/?apikey=52558a9&i=${movieId}`
         ).then((res) => res.json());
       });
       resolvePromisesArray();
