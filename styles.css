@@ -33,6 +33,11 @@ p.movie-rating {
   font-size: 0.75rem;
   font-weight: 400;
 }
+p.movie-plot {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.4285;
+}
 h3 {
   font-size: 1.56rem;
 }
@@ -40,7 +45,10 @@ div.movie-icon-container > p,
 a {
   font-weight: 700;
 }
-
+div.mid-movie-info > p {
+  font-size: 0.7rem;
+  font-weight: 400;
+}
 a {
   color: #fff;
   text-decoration: none;
@@ -113,7 +121,18 @@ div.movie-icon-container {
 img.movie-icon {
   width: 70px;
 }
-.top-movie-info {
+div.top-movie-info {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+div.mid-movie-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.add-to-watchlist {
   display: flex;
   align-items: center;
 }
