@@ -95,6 +95,10 @@ div.movie-icon-container {
   align-items: center;
   margin: auto;
 }
+.movie {
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 20px;
+}
 img.movie-icon {
   width: 70px;
 }
