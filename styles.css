@@ -25,6 +25,14 @@ body {
   background-size: cover;
   background-position: 100%;
 }
+p.movie-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+p.movie-rating {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
 h3 {
   font-size: 1.56rem;
 }
@@ -83,7 +91,7 @@ button {
 }
 .movies-list-container {
   /* width: 90%; */
-  max-width: 300px;
+  max-width: 350px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -99,10 +107,16 @@ div.movie-icon-container {
   border-bottom: 2px solid #e5e7eb;
   margin-bottom: 20px;
 }
+.movie:last-of-type {
+  border-bottom: none;
+}
 img.movie-icon {
   width: 70px;
 }
-
+.top-movie-info {
+  display: flex;
+  align-items: center;
+}
 div.movie-icon-container > p {
   color: #dfdddd;
   font-size: 1.125rem;
