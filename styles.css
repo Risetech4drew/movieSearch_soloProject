@@ -78,6 +78,9 @@ button {
   outline: none;
   border: none;
 }
+.movies-section {
+  margin-top: 40px;
+}
 .movies-list-container {
   /* width: 90%; */
   max-width: 300px;

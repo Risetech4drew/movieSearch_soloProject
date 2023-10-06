@@ -37,7 +37,7 @@ function renderMovies() {
   moviesFound.forEach(function (movie) {
     moviesHtml += `
     <div class="movie">
-      <img src="${movie.Poster}"/>
+      <img src="${movie.Poster}" class="movie-poster"/>
       <div class="movie-info">
       <div class="top-movie-info">
        <p class="movie-title">${movie.Title}</p>
