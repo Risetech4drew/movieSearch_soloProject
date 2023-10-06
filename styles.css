@@ -41,11 +41,13 @@ p.movie-plot {
 h3 {
   font-size: 1.56rem;
 }
+
 div.movie-icon-container > p,
 a {
   font-weight: 700;
 }
-div.mid-movie-info > p {
+div.mid-movie-info > p,
+div.add-to-watchlist > p {
   font-size: 0.7rem;
   font-weight: 400;
 }
@@ -135,6 +137,7 @@ div.mid-movie-info {
 div.add-to-watchlist {
   display: flex;
   align-items: center;
+  gap: 0.31rem;
 }
 div.movie-icon-container > p {
   color: #dfdddd;
