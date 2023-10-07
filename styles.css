@@ -123,6 +123,9 @@ div.movie-icon-container {
 img.movie-icon {
   width: 70px;
 }
+.movie-poster {
+  border-radius: 3px;
+}
 div.top-movie-info {
   display: flex;
   align-items: center;
@@ -130,7 +133,7 @@ div.top-movie-info {
 }
 div.mid-movie-info {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   align-items: center;
 }
 
@@ -166,5 +169,20 @@ div.movie-icon-container > p {
   }
   .search-input {
     width: 100%;
+  }
+  .movies-list-container {
+    max-width: 750px;
+  }
+  .movie {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  /* .movie-info {
+    margin-left: 20px;
+  } */
+
+  .movie-poster {
+    width: 99px;
   }
 }
