@@ -91,17 +91,19 @@ button {
   align-items: center;
   gap: 0.5rem;
   padding: 0.563em 0.813em;
+  border-radius: 0.375rem 0 0 0.375rem;
 }
 .search-input {
   outline: none;
   border: none;
+  width: fit-content;
 }
 .movies-section {
   margin-top: 40px;
 }
-.movies-list-container {
+div.movies-list-container {
   /* width: 90%; */
-  max-width: 300px;
+  width: 300px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -112,6 +114,7 @@ div.movie-icon-container {
   flex-direction: column;
   align-items: center;
   margin: auto;
+  /* text-align: center; */
 }
 .movie {
   border-bottom: 2px solid #e5e7eb;
@@ -142,9 +145,20 @@ div.add-to-watchlist {
   align-items: center;
   gap: 0.31rem;
 }
+div.movies-list-container > p,
 div.movie-icon-container > p {
   color: #dfdddd;
   font-size: 1.125rem;
+  font-weight: 700;
+}
+div.movies-list-container > p {
+  text-align: center;
+  margin: auto;
+}
+
+/* search input validation styles for empty field */
+.red-placeholderText {
+  color: red;
 }
 /* Media queries */
 @media (min-width: 670px) {
@@ -178,10 +192,6 @@ div.movie-icon-container > p {
     align-items: center;
     gap: 20px;
   }
-  /* .movie-info {
-    margin-left: 20px;
-  } */
-
   .movie-poster {
     width: 99px;
   }

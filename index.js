@@ -1,30 +1,44 @@
+const searchInputEl = document.getElementById("search-el");
+const inputFieldContainer = document.getElementById("input-field-container-el");
 let moviesByIds = [];
 let moviesFound = [];
 let moviesFoundPromisesArr = [];
 
 document.getElementById("search-btn").addEventListener("click", function () {
-  console.log("button is clicked");
-  const searchInputValue = document.getElementById("search-el").value;
-  //   console.log(searchInput);
-  fetch(
-    `https://www.omdbapi.com/?apikey=52558a9&s=${searchInputValue}&type=movie`
-  )
+  const searchValue = searchInputEl.value;
+  // checking if search input is empty or consists of whitespace using .trim()
+  // if (!searchValue.trim()) {
+  //   console.log("enter valid search query");
+  //   searchInputEl.placeholder = "enter a valid search query";
+  // }
+  fetch(`https://www.omdbapi.com/?apikey=52558a9&s=${searchValue}&type=movie`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
       //   mapping over data.search to return an array of movie IDs
-      moviesByIds = data.Search.map(function (movie) {
-        return movie.imdbID;
-      });
-      moviesFoundPromisesArr = moviesByIds.map(function (movieId) {
-        return fetch(
-          `https://www.omdbapi.com/?apikey=52558a9&i=${movieId}`
-        ).then((res) => res.json());
-      });
-      resolvePromisesArray();
+      if (data.Search) {
+        moviesByIds = data.Search.map(function (movie) {
+          return movie.imdbID;
+        });
+        moviesFoundPromisesArr = moviesByIds.map(function (movieId) {
+          return fetch(
+            `https://www.omdbapi.com/?apikey=52558a9&i=${movieId}`
+          ).then((res) => res.json());
+        });
+        resolvePromisesArray();
+      } else {
+        throw Error("Search not found");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      document.getElementById("movies-list").innerHTML = `
+                  <p>Unable to find what you’re looking for. Please try another search.</p>
+        `;
     });
 });
 
+// function applyValidation(shouldApply)
 function resolvePromisesArray() {
   Promise.all(moviesFoundPromisesArr).then(function (resolvedArr) {
     moviesFound = resolvedArr;
