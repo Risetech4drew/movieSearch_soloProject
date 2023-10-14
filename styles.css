@@ -38,8 +38,13 @@ p.movie-plot {
   font-size: 0.875rem;
   line-height: 1.4285;
 }
+img.add-icon,
+img.remove-icon {
+  cursor: pointer;
+}
 h3 {
   font-size: 1.56rem;
+  position: relative;
 }
 
 div.movie-icon-container > p,
@@ -103,12 +108,13 @@ button {
 }
 div.movies-list-container {
   /* width: 90%; */
-  width: 300px;
+  /* width: 300px; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   height: 90vh;
 }
+
 div.movie-icon-container {
   display: flex;
   flex-direction: column;
@@ -161,6 +167,12 @@ div.movies-list-container > p {
   color: red;
 }
 /* Media queries */
+@media (max-width: 600px) {
+  div.movies-list-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
 @media (min-width: 670px) {
   .hero {
     height: 208px;
