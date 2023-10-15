@@ -9,17 +9,33 @@ let movieWatchList = [];
 const watchListFromLocalStorage = JSON.parse(
   localStorage.getItem("movieWatchList")
 );
-if (watchListFromLocalStorage) {
-  movieWatchList = watchListFromLocalStorage;
-}
 
+window.onload = checkwatchlistArray;
+
+checkwatchlistArray();
+
+function checkwatchlistArray() {
+  if (watchListFromLocalStorage && watchListFromLocalStorage.length === 0) {
+    console.log("array is empty");
+    if (document.getElementById("watchList")) {
+      document.getElementById("watchList").innerHTML = `
+            <p>Your watchlist is looking a little empty...</p>
+    `;
+    }
+  } else {
+    movieWatchList = watchListFromLocalStorage;
+  }
+}
+console.log(watchListFromLocalStorage);
 if (document.getElementById("watchList")) {
   renderWatchList(movieWatchList);
 }
 
 document.addEventListener("click", function (e) {
-  if (e.target.dataset.movieId) {
-    addToWatchList(e.target.dataset.movieId);
+  if (e.target.dataset.addToWatchlist) {
+    addToWatchList(e.target.dataset.addToWatchlist);
+  } else if (e.target.dataset.removeMovie) {
+    removeFromWatchlist(e.target.dataset.removeMovie);
   }
 });
 
@@ -78,6 +94,23 @@ function addToWatchList(movieId) {
   localStorage.setItem("movieWatchList", JSON.stringify(movieWatchList));
 }
 
+function removeFromWatchlist(movieId) {
+  console.log(movieId);
+
+  const movie = movieWatchList.find(function (movie) {
+    return movie.imdbID === movieId;
+  });
+  const movieIndex = movieWatchList.indexOf(movie);
+
+  console.log(movieIndex);
+  movieWatchList.splice(movieIndex, 1);
+  console.log(movieWatchList);
+
+  localStorage.setItem("movieWatchList", JSON.stringify(movieWatchList));
+  renderWatchList(movieWatchList);
+  checkwatchlistArray();
+}
+
 function renderMovies(Arr) {
   let moviesHtml = "";
   Arr.forEach(function (movie) {
@@ -94,7 +127,7 @@ function renderMovies(Arr) {
         <p>${movie.Runtime}</p>
         <p>${movie.Genre}</p>
         <div class="add-to-watchlist">
-            <img src="/imgs/add-icon.png" class="add-icon"  id="add-icon" data-movie-Id="${movie.imdbID}">
+            <img src="/imgs/add-icon.png" class="add-icon"  id="add-icon" data-add-To-Watchlist="${movie.imdbID}">
             <p>Watchlist</p>
         </div>
       </div>
@@ -123,8 +156,8 @@ function renderWatchList(Arr) {
           <p>${movie.Runtime}</p>
           <p>${movie.Genre}</p>
           <div class="add-to-watchlist">
-              <img src="/imgs/remove-icon.png" class="remove-icon" data-movie-Id="${movie.imdbID}">
-              <p>Watchlist</p>
+              <img src="/imgs/remove-icon.png" class="remove-icon" data-remove-Movie="${movie.imdbID}">
+              <p>remove</p>
           </div>
         </div>
         <div class="bottom-movie-info">
