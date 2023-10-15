@@ -23,12 +23,11 @@ function checkwatchlistArray() {
     `;
     }
   } else {
-    movieWatchList = watchListFromLocalStorage;
+    if (document.getElementById("watchList")) {
+      movieWatchList = watchListFromLocalStorage;
+      renderWatchList(movieWatchList);
+    }
   }
-}
-console.log(watchListFromLocalStorage);
-if (document.getElementById("watchList")) {
-  renderWatchList(movieWatchList);
 }
 
 document.addEventListener("click", function (e) {
@@ -92,6 +91,7 @@ function addToWatchList(movieId) {
   console.log(movie);
   movieWatchList.unshift(movie);
   localStorage.setItem("movieWatchList", JSON.stringify(movieWatchList));
+  // localStorage.clear();
 }
 
 function removeFromWatchlist(movieId) {
